@@ -128,10 +128,10 @@ function update() {
     // only scroll camera if the player is outside of a small box
     var camdiff = [cameraPos[0] - playerPos[0] + (canvasWidth / 2), cameraPos[1] - playerPos[1] + (canvasHeight / 2)];
     if (Math.abs(camdiff[0]) > 16) {
-        cameraPos[0] = lerp(cameraPos[0], playerPos[0] - (canvasWidth / 2), 0.025);
+        cameraPos[0] = lerp(cameraPos[0], playerPos[0] - (canvasWidth / 2), 0.03);
     }
     if (Math.abs(camdiff[1]) > 9) {
-        cameraPos[1] = lerp(cameraPos[1], playerPos[1] - (canvasHeight / 2), 0.025);
+        cameraPos[1] = lerp(cameraPos[1], playerPos[1] - (canvasHeight / 2), 0.03);
     }
 
     // draw stuff
@@ -161,10 +161,10 @@ function update() {
         walkFrame = 0;
     }
 
-    drawChr(playerPos[0] - Math.ceil(cameraPos[0]) - 8, playerPos[1] - Math.ceil(cameraPos[1]) - 8, 0 + (walkFrame * 4) + (angle * 12), 0);
-    drawChr(playerPos[0] - Math.ceil(cameraPos[0]) - 0, playerPos[1] - Math.ceil(cameraPos[1]) - 8, 1 + (walkFrame * 4) + (angle * 12), 0);
-    drawChr(playerPos[0] - Math.ceil(cameraPos[0]) - 8, playerPos[1] - Math.ceil(cameraPos[1]) - 0, 2 + (walkFrame * 4) + (angle * 12), 0);
-    drawChr(playerPos[0] - Math.ceil(cameraPos[0]) - 0, playerPos[1] - Math.ceil(cameraPos[1]) - 0, 3 + (walkFrame * 4) + (angle * 12), 0);
+    drawChr(playerPos[0] - Math.ceil(cameraPos[0]) - 8, playerPos[1] - Math.ceil(cameraPos[1]) - 8 - (walkFrame > 0), 0 + (walkFrame * 4) + (angle * 12), 0);
+    drawChr(playerPos[0] - Math.ceil(cameraPos[0]) - 0, playerPos[1] - Math.ceil(cameraPos[1]) - 8 - (walkFrame > 0), 1 + (walkFrame * 4) + (angle * 12), 0);
+    drawChr(playerPos[0] - Math.ceil(cameraPos[0]) - 8, playerPos[1] - Math.ceil(cameraPos[1]) - 0 - (walkFrame > 0), 2 + (walkFrame * 4) + (angle * 12), 0);
+    drawChr(playerPos[0] - Math.ceil(cameraPos[0]) - 0, playerPos[1] - Math.ceil(cameraPos[1]) - 0 - (walkFrame > 0), 3 + (walkFrame * 4) + (angle * 12), 0);
     //drawPixel(playerPos[0] - Math.ceil(cameraPos[0]), playerPos[1] - Math.ceil(cameraPos[1]), 0, 3);
 }
 
